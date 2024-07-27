@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Demo</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        button { margin: 10px 0; padding: 5px 10px; }
+        #result { margin-top: 20px; padding: 10px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>CORS Demo</h1>
+    
+    <button hx-get="/api" hx-target="#result" hx-swap="innerHTML">
+        同一オリジン (Go)
+    </button>
+    
+    <button hx-get="/proxy-rust" hx-target="#result" hx-swap="innerHTML">
+        別オリジン but プロキシ (Rust via Go)
+    </button>
+    
+    <button hx-get="http://localhost:8081" hx-target="#result" hx-swap="innerHTML">
+        別オリジン No CORS (Rust)
+    </button>
+    
+    <button hx-get="http://localhost:8082" hx-target="#result" hx-swap="innerHTML">
+        別オリジン Yes CORS (Python/FastAPI)
+    </button>
+    
+    <div id="result"></div>
+</body>
+</html>

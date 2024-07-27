@@ -1,0 +1,18 @@
+services:
+  go-server:
+    build:
+      context: ./go_server
+      dockerfile: Dockerfile
+    network_mode: host
+
+  rust-server:
+    build:
+      context: ./rust_server
+      dockerfile: Dockerfile
+    network_mode: host
+
+  python-server:
+    build:
+      context: ./python_server
+      dockerfile: Dockerfile
+    network_mode: host
